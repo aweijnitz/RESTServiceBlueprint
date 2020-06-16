@@ -6,7 +6,7 @@ This is a generic webservice that is in intended as a blueprint to save time on 
 
 Based on Spring Boot.
 
-**NOTE!** To reduce the amount of configuration and adaptation that has to be done, it always builds an artifact named `target/application.jar`. This is not really best practice, but simplifies scripting. Just edit the pom.xml and get rid of the final build name to revert back to normal behavior.
+**NOTE!** To reduce the amount of configuration and adaptation that has to be done, it always builds an artifact named `target/application.jar`. This is not really best practice, but simplifies scripting. Just edit the pom.xml and get rid of `<finalName>application</finalName>` to revert back to normal behavior.
 
 ## Use
 
@@ -17,6 +17,23 @@ Based on Spring Boot.
     
     mvn clean package
     mvn clean package spring-boot:run
+    
+## Build Docker Image
+
+This project makes use of the new built-in docker buildpack in Spring Boot.
+See https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-3-0-m1
+
+    mvn spring-boot:build-image
+    
+    # same
+    
+    # Try
+    docker images
+    REPOSITORY     TAG           IMAGE ID
+    ...
+    echoservice    1.0-SNAPSHOT  231e3123
+    ...
+    docker run -it -p8080:9090 echoservice:1.0-SNAPSHOT
 
 ## Test
 

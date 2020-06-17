@@ -52,6 +52,13 @@ See https://spring.io/blog/2020/01/27/creating-docker-images-with-spring-boot-2-
     
 ## With Kubernetes on localhost
 
+Remember, the local state can always be inspected using
+
+    minikube dashboard
+    
+    # and (separate installation)
+    k9s
+
 ### SETUP | Prerequisite
 
 Change docker repositiory to Minikube and rebuild and push the image.
